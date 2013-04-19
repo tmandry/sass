@@ -92,6 +92,7 @@ module Sass
         :color => HEXCOLOR,
         :bool => /(true|false)\b/,
         :null => /null\b/,
+        :selector => /&/,
         :ident_op => %r{(#{Regexp.union(*IDENT_OP_NAMES.map{|s| Regexp.new(Regexp.escape(s) + "(?!#{NMCHAR}|\Z)")})})},
         :op => %r{(#{Regexp.union(*OP_NAMES)})},
       }
@@ -239,8 +240,8 @@ module Sass
         end
 
         variable || string(:double, false) || string(:single, false) || number ||
-          color || bool || null || string(:uri, false) || raw(UNICODERANGE) ||
-          special_fun || special_val || ident_op || ident || op
+          color || bool || null || selector || string(:uri, false) ||
+          raw(UNICODERANGE) || special_fun || special_val || ident_op || ident || op
       end
 
       def variable
@@ -313,6 +314,14 @@ MESSAGE
         script_null = Script::Null.new
         script_null.source_range = range(start_pos)
         [:null, script_null]
+      end
+
+      def selector
+        start_pos = source_position
+        return unless scan(REGULAR_EXPRESSIONS[:selector])
+        script_selector = Script::Selector.new
+        script_selector.source_range = range(start_pos)
+        [:selector, script_selector]
       end
 
       def special_fun

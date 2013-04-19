@@ -484,7 +484,7 @@ RUBY
       end
 
       def literal
-        (t = try_tok(:color, :bool, :null)) && (return t.value)
+        (t = try_tok(:color, :bool, :null, :selector)) && (return t.value)
       end
 
       # It would be possible to have unified #assert and #try methods,

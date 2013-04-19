@@ -12,6 +12,7 @@ module Sass::Script
     require 'sass/script/null'
     require 'sass/script/list'
     require 'sass/script/arg_list'
+    require 'sass/script/selector'
 
     # Returns the Ruby value of the literal.
     # The type of this value varies based on the subclass.
