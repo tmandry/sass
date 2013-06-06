@@ -297,7 +297,7 @@ MESSAGE
 
       def bool
         return unless s = scan(REGULAR_EXPRESSIONS[:bool])
-        script_bool = Script::Value::Bool.new(s == 'true')
+        script_bool = Script::Value::Bool(s == 'true')
         [:bool, script_bool]
       end
 

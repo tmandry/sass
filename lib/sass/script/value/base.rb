@@ -66,7 +66,7 @@ MSG
     # @return [Sass::Script::Value::Bool] True if this value is the same as the other,
     #   false otherwise
     def eq(other)
-      Sass::Script::Value::Bool.new(self.class == other.class && self.value == other.value)
+      Sass::Script::Value::Bool(self.class == other.class && self.value == other.value)
     end
 
     # The SassScript `!=` operation.
@@ -77,7 +77,7 @@ MSG
     # @return [Sass::Script::Value::Bool] False if this value is the same as the other,
     #   true otherwise
     def neq(other)
-      Sass::Script::Value::Bool.new(!eq(other).to_bool)
+      Sass::Script::Value::Bool(!eq(other).to_bool)
     end
 
     # The SassScript `==` operation.
@@ -88,7 +88,7 @@ MSG
     # @return [Sass::Script::Value::Bool] True if this value is the same as the other,
     #   false otherwise
     def unary_not
-      Sass::Script::Value::Bool.new(!to_bool)
+      Sass::Script::Value::Bool(!to_bool)
     end
 
     # The SassScript `=` operation

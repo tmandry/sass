@@ -352,7 +352,7 @@ module Sass::Script::Value
     # @return [Bool] True if this value is the same as the other,
     #   false otherwise
     def eq(other)
-      Sass::Script::Value::Bool.new(
+      Sass::Script::Value::Bool(
         other.is_a?(Color) && rgb == other.rgb && alpha == other.alpha)
     end
 

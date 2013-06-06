@@ -1346,7 +1346,7 @@ module Sass::Script
     # @raise [ArgumentError] if `number` isn't a number
     def unitless(number)
       assert_type number, :Number
-      Sass::Script::Value::Bool.new(number.unitless?)
+      Sass::Script::Value::Bool(number.unitless?)
     end
     declare :unitless, [:number]
 
@@ -1363,7 +1363,7 @@ module Sass::Script
     def comparable(number_1, number_2)
       assert_type number_1, :Number
       assert_type number_2, :Number
-      Sass::Script::Value::Bool.new(number_1.comparable_to?(number_2))
+      Sass::Script::Value::Bool(number_1.comparable_to?(number_2))
     end
     declare :comparable, [:number_1, :number_2]
 
@@ -1617,7 +1617,7 @@ module Sass::Script
       if index
         Sass::Script::Value::Number.new(index + 1)
       else
-        Sass::Script::Value::Bool.new(false)
+        Sass::Script::Value::Bool::FALSE
       end
     end
     declare :index, [:list, :value]
