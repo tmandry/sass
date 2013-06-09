@@ -22,7 +22,7 @@ module Sass
         found
       end
       def to_s
-        "#{@root} (DEPRECATED)"
+        @specified_root
       end
     end
   end

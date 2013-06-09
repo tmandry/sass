@@ -224,7 +224,7 @@ module Sass::Plugin
 
       require 'listen'
 
-      directories = load_paths.map{|location| File.expand_path(location) }
+      directories = load_paths.map{|location| File.expand_path(location.to_s) }
       individual_files.each do |(source, target, _)|
         dir = File.dirname(File.expand_path(source))
         # no need to add a directory that is already watched.
